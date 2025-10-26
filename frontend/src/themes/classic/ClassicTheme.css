@@ -1,0 +1,458 @@
+/* Classic Dark Theme - Elegant and Timeless */
+:root {
+  --primary-dark: #0a0a0a;
+  --secondary-dark: #1a1a1a;
+  --accent-dark: #2d2d2d;
+  --gold: #d4af37;
+  --gold-light: #f4e192;
+  --gold-dark: #b8941f;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #808080;
+  --success: #4a9b5f;
+  --error: #d32f2f;
+  --warning: #f57c00;
+  --info: #1976d2;
+  --shadow-dark: rgba(0, 0, 0, 0.8);
+  --shadow-gold: rgba(212, 175, 55, 0.3);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--gold), 0 0 10px var(--gold), 0 0 15px var(--gold);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold), 0 0 30px var(--gold);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--gold) }
+}
+
+/* Base styles */
+.classic-theme {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 50%, var(--accent-dark) 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.classic-theme * {
+  box-sizing: border-box;
+}
+
+/* App Container */
+.classic-theme .App {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 50%, var(--accent-dark) 100%);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Header */
+.classic-theme .App-header {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+  border-bottom: 2px solid var(--gold);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px var(--shadow-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.classic-theme .App-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+  animation: shimmer 3s infinite;
+}
+
+.classic-theme .header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.classic-theme .header-left h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, var(--gold), var(--gold-light), var(--gold));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: glow 2s ease-in-out infinite alternate;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.classic-theme .connection-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.classic-theme .status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.classic-theme .status-indicator.connected {
+  background-color: var(--success);
+  box-shadow: 0 0 10px rgba(74, 155, 95, 0.5);
+}
+
+.classic-theme .status-indicator.disconnected {
+  background-color: var(--error);
+  box-shadow: 0 0 10px rgba(211, 47, 47, 0.5);
+}
+
+.classic-theme .header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.classic-theme .user-info {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.classic-theme .logout-btn {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--primary-dark);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all var(--transition-medium);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.classic-theme .logout-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left var(--transition-medium);
+}
+
+.classic-theme .logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+.classic-theme .logout-btn:hover::before {
+  left: 100%;
+}
+
+/* Main Content */
+.classic-theme .App-main {
+  padding: 2rem 1rem;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.classic-theme .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Content Cards */
+.classic-theme .content {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(45, 45, 45, 0.9));
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow:
+    0 20px 40px var(--shadow-dark),
+    inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  animation: slideInRight 0.8s ease-out 0.4s both;
+  position: relative;
+  overflow: hidden;
+}
+
+.classic-theme .content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: shimmer 4s infinite;
+}
+
+/* Loading */
+.classic-theme .loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  position: relative;
+}
+
+.classic-theme .loading::after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(212, 175, 55, 0.3);
+  border-top: 3px solid var(--gold);
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
+  margin-left: 1rem;
+}
+
+/* Buttons */
+.classic-theme .btn {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--primary-dark);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition-medium);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  font-size: 0.875rem;
+}
+
+.classic-theme .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left var(--transition-medium);
+}
+
+.classic-theme .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+.classic-theme .btn:hover::before {
+  left: 100%;
+}
+
+.classic-theme .btn:active {
+  transform: translateY(-1px);
+}
+
+/* Cards */
+.classic-theme .card {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(45, 45, 45, 0.8));
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 8px 25px var(--shadow-dark);
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.classic-theme .card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.classic-theme .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px var(--shadow-dark);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* Form Elements */
+.classic-theme .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.classic-theme .form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.classic-theme .form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all var(--transition-medium);
+}
+
+.classic-theme .form-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+  background: rgba(26, 26, 26, 0.9);
+}
+
+.classic-theme .form-input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .classic-theme .container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .classic-theme .App-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .classic-theme .App-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .classic-theme .header-right {
+    justify-content: center;
+  }
+}
+
+/* Scrollbar Styling */
+.classic-theme ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.classic-theme ::-webkit-scrollbar-track {
+  background: var(--secondary-dark);
+}
+
+.classic-theme ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border-radius: 4px;
+}
+
+.classic-theme ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+}
+
+/* Selection */
+.classic-theme ::selection {
+  background: rgba(212, 175, 55, 0.3);
+  color: var(--gold-light);
+}
