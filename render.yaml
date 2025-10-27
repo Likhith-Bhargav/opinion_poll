@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: opinion-poll-backend
+    runtime: python3
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn --worker-class eventlet -w 1 -b 0.0.0.0:10000 app_flask:app"
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        generateValue: true
+      - key: CORS_ORIGINS
+        sync: false
+      - key: SOCKETIO_CORS_ORIGINS
+        sync: false
+      - key: PORT
+        value: 10000

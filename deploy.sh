@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Opinion Poll Platform - Automated Deployment Script
-# This script helps deploy both backend and frontend
+# This script helps deploy backend to Render and frontend to Vercel
 
 echo "🚀 Opinion Poll Platform - Deployment Script"
 echo "=============================================="
@@ -34,14 +34,6 @@ print_warning() {
 check_dependencies() {
     print_status "Checking dependencies..."
 
-    if ! command -v railway &> /dev/null; then
-        print_warning "Railway CLI not found. Install with: npm install -g @railway/cli"
-        print_status "Installing Railway CLI..."
-        npm install -g @railway/cli
-    else
-        print_success "Railway CLI found"
-    fi
-
     if ! command -v vercel &> /dev/null; then
         print_warning "Vercel CLI not found. Install with: npm install -g vercel"
         print_status "Installing Vercel CLI..."
@@ -65,32 +57,29 @@ check_dependencies() {
     fi
 }
 
-# Backend deployment function
+# Backend deployment function (Render)
 deploy_backend() {
-    print_status "Deploying backend to Railway..."
-
-    cd backend
-
-    # Check if railway project exists
-    if ! railway status &> /dev/null; then
-        print_warning "No Railway project linked. Creating new project..."
-        railway init
-    fi
-
-    # Set environment variables
-    print_status "Setting environment variables..."
-    railway variables set FLASK_ENV=production
-    railway variables set JWT_SECRET_KEY=$(python3 -c "import secrets; print(secrets.token_hex(32))")
-
-    print_status "Deploying to Railway..."
-    railway up
-
-    # Get the backend URL
-    BACKEND_URL=$(railway domain)
-    print_success "Backend deployed at: $BACKEND_URL"
-
-    cd ..
-    echo $BACKEND_URL > .backend_url.txt
+    print_status "Backend deployment to Render..."
+    print_status "Note: Render deployment is done through their web dashboard"
+    print_status ""
+    print_status "To deploy backend to Render:"
+    print_status "1. Go to https://render.com"
+    print_status "2. Click 'New' → 'Web Service'"
+    print_status "3. Connect your GitHub repository"
+    print_status "4. Configure the service:"
+    print_status "   - Name: opinion-poll-backend"
+    print_status "   - Runtime: Python 3"
+    print_status "   - Build Command: pip install -r requirements.txt"
+    print_status "   - Start Command: gunicorn --worker-class eventlet -w 1 -b 0.0.0.0:10000 app_flask:app"
+    print_status ""
+    print_status "5. Set Environment Variables:"
+    print_status "   FLASK_ENV = production"
+    print_status "   CORS_ORIGINS = https://your-frontend.vercel.app"
+    print_status "   SOCKETIO_CORS_ORIGINS = https://your-frontend.vercel.app"
+    print_status ""
+    print_status "6. Click 'Create Web Service'"
+    print_status ""
+    print_warning "Backend URL will be: https://your-app.onrender.com"
 }
 
 # Frontend deployment function
@@ -108,20 +97,30 @@ deploy_frontend() {
     # Set environment variables
     print_status "Setting environment variables..."
 
-    # Read backend URL from file
+    # Read backend URL from user input or file
     if [ -f "../.backend_url.txt" ]; then
         BACKEND_URL=$(cat ../.backend_url.txt)
         print_status "Using backend URL: $BACKEND_URL"
-
-        # Set Vercel environment variables
-        vercel env add REACT_APP_API_URL
-        vercel env add REACT_APP_WS_URL
     else
-        print_warning "Backend URL not found. Please deploy backend first."
-        print_status "You can set environment variables manually in Vercel dashboard:"
-        print_status "REACT_APP_API_URL = https://your-backend.railway.app/api"
-        print_status "REACT_APP_WS_URL = https://your-backend.railway.app"
+        print_warning "Backend URL not found."
+        print_status "Please enter your Render backend URL (e.g., https://your-app.onrender.com):"
+        read -p "Backend URL: " BACKEND_URL
+
+        if [ -z "$BACKEND_URL" ]; then
+            print_error "Backend URL is required for frontend deployment"
+            exit 1
+        fi
+
+        echo $BACKEND_URL > ../.backend_url.txt
     fi
+
+    # Set Vercel environment variables
+    print_status "Setting Vercel environment variables..."
+    vercel env rm REACT_APP_API_URL 2>/dev/null || true
+    vercel env rm REACT_APP_WS_URL 2>/dev/null || true
+
+    vercel env add REACT_APP_API_URL
+    vercel env add REACT_APP_WS_URL
 
     print_status "Deploying to Vercel..."
     vercel --prod
@@ -135,7 +134,7 @@ deploy_frontend() {
 # Main deployment function
 main() {
     echo "Choose deployment option:"
-    echo "1) Deploy Backend only (Railway)"
+    echo "1) Deploy Backend only (Render - Manual)"
     echo "2) Deploy Frontend only (Vercel)"
     echo "3) Deploy Both (Backend + Frontend)"
     echo "4) Setup Development Environment"
@@ -153,10 +152,12 @@ main() {
         3)
             check_dependencies
             deploy_backend
+            echo ""
+            read -p "Press Enter after deploying backend to Render and getting the URL..."
             deploy_frontend
             print_success "🎉 Deployment complete!"
+            print_status "Backend: Render (manual deployment required)"
             print_status "Frontend: $(cat .backend_url.txt 2>/dev/null || echo 'Not deployed')"
-            print_status "Backend: $(cat frontend/.vercel_url.txt 2>/dev/null || echo 'Not deployed')"
             ;;
         4)
             print_status "Setting up development environment..."
