@@ -173,7 +173,7 @@ deploy_backend() {
     print_status "3. Connect your GitHub repository"
     print_status "4. Configure the service:"
     print_status "   - Name: opinion-poll-backend-v2"
-    print_status "   - Runtime: Python 3.12"
+    print_status "   - Runtime: Python 3.11"
     print_status "   - Build Command: pip install -r requirements.txt"
     print_status "   - Start Command: gunicorn --worker-class gevent -w 1 -b 0.0.0.0:10000 app_flask:app"
     print_status ""
