@@ -10,12 +10,17 @@ import jwt
 import bcrypt
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your-secret-key'
+app.config['SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'your-secret-key')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///./opinion_poll.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-CORS(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
+# CORS configuration for production
+cors_origins = os.getenv('CORS_ORIGINS', 'http://localhost:3000').split(',')
+CORS(app, origins=cors_origins)
+
+# SocketIO configuration for production
+socketio_cors_origins = os.getenv('SOCKETIO_CORS_ORIGINS', 'http://localhost:3000').split(',')
+socketio = SocketIO(app, cors_allowed_origins=socketio_cors_origins)
 db = SQLAlchemy(app)
 
 # Models

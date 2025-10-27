@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "framework": "create-react-app",
+  "installCommand": "npm install",
+  "env": {
+    "REACT_APP_API_URL": "@railway-backend-url/api",
+    "REACT_APP_WS_URL": "@railway-backend-url"
+  }
+}
