@@ -1,9 +1,12 @@
 services:
   - type: web
-    name: opinion-poll-backend
+    name: opinion-poll-backend-v2
     runtime: python3.12
     buildCommand: "pip install -r requirements.txt"
+    # Use gevent worker (recommended for SocketIO)
     startCommand: "gunicorn --worker-class gevent -w 1 -b 0.0.0.0:10000 app_flask:app"
+    # Alternative: Use default sync worker (fallback if gevent fails)
+    # startCommand: "gunicorn -w 1 -b 0.0.0.0:10000 app_flask:app"
     envVars:
       - key: FLASK_ENV
         value: production

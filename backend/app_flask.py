@@ -32,12 +32,19 @@ CORS(app, origins=cors_origins)
 
 # SocketIO configuration for production
 socketio_cors_origins = os.getenv('SOCKETIO_CORS_ORIGINS', 'http://localhost:3000').split(',')
-# Use gevent for async support, fallback to threading if gevent not available
-try:
-    socketio = SocketIO(app, cors_allowed_origins=socketio_cors_origins, async_mode='gevent')
-except RuntimeError:
-    # Fallback to threading mode if gevent is not compatible
-    socketio = SocketIO(app, cors_allowed_origins=socketio_cors_origins, async_mode='threading')
+# Try different async modes in order of preference
+async_modes = ['gevent', 'eventlet', 'threading']
+for mode in async_modes:
+    try:
+        socketio = SocketIO(app, cors_allowed_origins=socketio_cors_origins, async_mode=mode)
+        print(f"Using SocketIO async mode: {mode}")
+        break
+    except (RuntimeError, ImportError) as e:
+        print(f"Failed to use {mode} mode: {e}")
+        continue
+else:
+    # Final fallback - disable async mode entirely (uses HTTP polling)
+    socketio = SocketIO(app, cors_allowed_origins=socketio_cors_origins, async_mode=None)
 db = SQLAlchemy(app)
 
 # Models
