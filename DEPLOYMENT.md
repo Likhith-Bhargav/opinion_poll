@@ -32,7 +32,7 @@ The backend is configured with the following files:
    - **Name:** `opinion-poll-backend` (or your preferred name)
    - **Runtime:** `Python 3`
    - **Build Command:** `pip install -r requirements.txt`
-   - **Start Command:** `gunicorn --worker-class eventlet -w 1 -b 0.0.0.0:10000 app_flask:app`
+   - **Start Command:** `gunicorn -w 1 -b 0.0.0.0:10000 app_flask:app`
 
 3. **Set Environment Variables in Render:**
    Render will automatically generate some variables. You need to set:

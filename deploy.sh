@@ -70,7 +70,7 @@ deploy_backend() {
     print_status "   - Name: opinion-poll-backend"
     print_status "   - Runtime: Python 3"
     print_status "   - Build Command: pip install -r requirements.txt"
-    print_status "   - Start Command: gunicorn --worker-class eventlet -w 1 -b 0.0.0.0:10000 app_flask:app"
+    print_status "   - Start Command: gunicorn -w 1 -b 0.0.0.0:10000 app_flask:app"
     print_status ""
     print_status "5. Set Environment Variables:"
     print_status "   FLASK_ENV = production"
