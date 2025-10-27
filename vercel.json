@@ -3,7 +3,6 @@
   "outputDirectory": "frontend/build",
   "framework": "create-react-app",
   "installCommand": "cd frontend && npm install --legacy-peer-deps",
-  "nodeVersion": "18",
   "env": {
     "REACT_APP_API_URL": "https://opinion-poll.onrender.com/api",
     "REACT_APP_WS_URL": "https://opinion-poll.onrender.com"
