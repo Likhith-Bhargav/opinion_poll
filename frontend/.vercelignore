@@ -9,8 +9,6 @@ README.md
 .vercel/
 
 # Development files
-src/
-public/
 .vscode/
 .idea/
 
