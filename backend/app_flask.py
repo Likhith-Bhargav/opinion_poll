@@ -9,6 +9,14 @@ import json
 import jwt
 import bcrypt
 
+# Monkey patch for gevent compatibility
+try:
+    import gevent
+    from gevent import monkey
+    monkey.patch_all()
+except ImportError:
+    pass
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'your-secret-key')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///./opinion_poll.db')
@@ -24,7 +32,12 @@ CORS(app, origins=cors_origins)
 
 # SocketIO configuration for production
 socketio_cors_origins = os.getenv('SOCKETIO_CORS_ORIGINS', 'http://localhost:3000').split(',')
-socketio = SocketIO(app, cors_allowed_origins=socketio_cors_origins)
+# Use gevent for async support, fallback to threading if gevent not available
+try:
+    socketio = SocketIO(app, cors_allowed_origins=socketio_cors_origins, async_mode='gevent')
+except RuntimeError:
+    # Fallback to threading mode if gevent is not compatible
+    socketio = SocketIO(app, cors_allowed_origins=socketio_cors_origins, async_mode='threading')
 db = SQLAlchemy(app)
 
 # Models
