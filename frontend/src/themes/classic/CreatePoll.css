@@ -1,5 +1,6 @@
 /* Classic Theme Create Poll Styles */
-.create-poll {
+/* Classic Theme Create Poll Styles - Only apply when classic theme is active */
+.classic-theme .create-poll {
   background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(45, 45, 45, 0.9));
   backdrop-filter: blur(15px);
   border-radius: 20px;
@@ -11,7 +12,7 @@
   overflow: hidden;
 }
 
-.create-poll::before {
+.classic-theme .create-poll::before {
   content: '';
   position: absolute;
   top: 0;
@@ -22,7 +23,7 @@
   animation: shimmer 4s infinite;
 }
 
-.create-poll-header {
+.classic-theme .create-poll-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,7 +32,7 @@
   border-bottom: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-.create-poll-title {
+.classic-theme .create-poll-title {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0;
@@ -42,26 +43,26 @@
   background-clip: text;
 }
 
-.create-poll-icon {
+.classic-theme .create-poll-icon {
   font-size: 1.5rem;
   animation: float 3s ease-in-out infinite;
 }
 
-.create-poll-form {
+.classic-theme .create-poll-form {
   position: relative;
   z-index: 1;
 }
 
-.form-group {
+.classic-theme .form-group {
   margin-bottom: 1.5rem;
   animation: fadeInUp 0.6s ease-out both;
 }
 
-.form-group:nth-child(1) { animation-delay: 0.1s; }
-.form-group:nth-child(2) { animation-delay: 0.2s; }
-.form-group:nth-child(3) { animation-delay: 0.3s; }
+.classic-theme .form-group:nth-child(1) { animation-delay: 0.1s; }
+.classic-theme .form-group:nth-child(2) { animation-delay: 0.2s; }
+.classic-theme .form-group:nth-child(3) { animation-delay: 0.3s; }
 
-.form-label {
+.classic-theme .form-label {
   display: block;
   margin-bottom: 0.5rem;
   color: var(--text-primary);
@@ -71,7 +72,7 @@
   letter-spacing: 1px;
 }
 
-.form-input {
+.classic-theme .form-input {
   width: 100%;
   padding: 1rem;
   background: rgba(26, 26, 26, 0.8);
@@ -84,7 +85,7 @@
   position: relative;
 }
 
-.form-input:focus {
+.classic-theme .form-input:focus {
   outline: none;
   border-color: var(--gold);
   box-shadow:
@@ -94,17 +95,17 @@
   transform: translateY(-2px);
 }
 
-.form-input::placeholder {
+.classic-theme .form-input::placeholder {
   color: var(--text-muted);
   font-style: italic;
 }
 
-.textarea-input {
+.classic-theme .textarea-input {
   resize: vertical;
   min-height: 80px;
 }
 
-.char-counter {
+.classic-theme .char-counter {
   position: absolute;
   bottom: 8px;
   right: 12px;
@@ -116,30 +117,30 @@
   font-style: italic;
 }
 
-.options-header {
+.classic-theme .options-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
 }
 
-.options-count {
+.classic-theme .options-count {
   font-size: 0.8rem;
   color: var(--text-secondary);
   font-style: italic;
 }
 
-.options-list {
+.classic-theme .options-list {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.option-input-wrapper {
+.classic-theme .option-input-wrapper {
   position: relative;
 }
 
-.option-input-container {
+.classic-theme .option-input-container {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -150,17 +151,17 @@
   transition: all var(--transition-medium);
 }
 
-.option-input-container:hover {
+.classic-theme .option-input-container:hover {
   border-color: rgba(212, 175, 55, 0.4);
   background: rgba(26, 26, 26, 0.8);
 }
 
-.option-input-container:focus-within {
+.classic-theme .option-input-container:focus-within {
   border-color: var(--gold);
   box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
 }
 
-.option-number {
+.classic-theme .option-number {
   background: linear-gradient(135deg, var(--gold-dark), var(--gold));
   color: var(--primary-dark);
   width: 28px;
@@ -174,7 +175,7 @@
   flex-shrink: 0;
 }
 
-.option-input {
+.classic-theme .option-input {
   flex: 1;
   background: transparent;
   border: none;
@@ -183,11 +184,11 @@
   padding: 0.5rem;
 }
 
-.option-input:focus {
+.classic-theme .option-input:focus {
   outline: none;
 }
 
-.remove-option {
+.classic-theme .remove-option {
   background: rgba(211, 47, 47, 0.8);
   color: white;
   border: none;
@@ -203,16 +204,16 @@
   flex-shrink: 0;
 }
 
-.remove-option:hover {
+.classic-theme .remove-option:hover {
   background: rgba(211, 47, 47, 1);
   transform: scale(1.1);
 }
 
-.remove-icon {
+.classic-theme .remove-icon {
   line-height: 1;
 }
 
-.add-option-btn {
+.classic-theme .add-option-btn {
   background: linear-gradient(135deg, rgba(74, 155, 95, 0.8), rgba(74, 155, 95, 0.9));
   color: white;
   border: none;
@@ -230,17 +231,17 @@
   justify-content: center;
 }
 
-.add-option-btn:hover {
+.classic-theme .add-option-btn:hover {
   background: linear-gradient(135deg, rgba(74, 155, 95, 0.9), rgba(74, 155, 95, 1));
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(74, 155, 95, 0.3);
 }
 
-.add-icon {
+.classic-theme .add-icon {
   font-size: 1rem;
 }
 
-.form-help {
+.classic-theme .form-help {
   font-size: 0.8rem;
   color: var(--text-muted);
   font-style: italic;
@@ -250,7 +251,7 @@
   gap: 0.5rem;
 }
 
-.error-message {
+.classic-theme .error-message {
   background: rgba(211, 47, 47, 0.1);
   border: 1px solid rgba(211, 47, 47, 0.3);
   border-radius: 8px;
@@ -264,11 +265,11 @@
   animation: shake 0.5s ease-in-out;
 }
 
-.error-icon {
+.classic-theme .error-icon {
   font-size: 1rem;
 }
 
-.submit-poll-btn {
+.classic-theme .submit-poll-btn {
   width: 100%;
   background: linear-gradient(135deg, var(--gold-dark), var(--gold));
   color: var(--primary-dark);
@@ -286,7 +287,7 @@
   margin-top: 1rem;
 }
 
-.submit-poll-btn::before {
+.classic-theme .submit-poll-btn::before {
   content: '';
   position: absolute;
   top: 0;
@@ -297,50 +298,50 @@
   transition: left var(--transition-medium);
 }
 
-.submit-poll-btn:hover {
+.classic-theme .submit-poll-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
   animation: glow 1s ease-in-out infinite alternate;
 }
 
-.submit-poll-btn:hover::before {
+.classic-theme .submit-poll-btn:hover::before {
   left: 100%;
 }
 
-.submit-poll-btn:active {
+.classic-theme .submit-poll-btn:active {
   transform: translateY(-1px);
 }
 
-.submit-poll-btn:disabled {
+.classic-theme .submit-poll-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
   transform: none;
   animation: none;
 }
 
-.submit-poll-btn.loading {
+.classic-theme .submit-poll-btn.loading {
   pointer-events: none;
 }
 
-.loading-state {
+.classic-theme .loading-state {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 }
 
-.button-text {
+.classic-theme .button-text {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 }
 
-.button-icon {
+.classic-theme .button-icon {
   font-size: 1rem;
 }
 
-.spinner {
+.classic-theme .spinner {
   width: 16px;
   height: 16px;
   border: 2px solid rgba(10, 10, 10, 0.3);
@@ -350,7 +351,7 @@
 }
 
 /* Decorative floating elements */
-.create-poll-decoration {
+.classic-theme .create-poll-decoration {
   position: absolute;
   top: 0;
   left: 0;
@@ -360,26 +361,26 @@
   overflow: hidden;
 }
 
-.floating-element {
+.classic-theme .floating-element {
   position: absolute;
   font-size: 1.5rem;
   opacity: 0.1;
   animation: float 4s ease-in-out infinite;
 }
 
-.element-1 {
+.classic-theme .element-1 {
   top: 20%;
   left: 10%;
   animation-delay: 0s;
 }
 
-.element-2 {
+.classic-theme .element-2 {
   top: 60%;
   right: 15%;
   animation-delay: 1.5s;
 }
 
-.element-3 {
+.classic-theme .element-3 {
   bottom: 20%;
   left: 20%;
   animation-delay: 3s;
@@ -387,25 +388,25 @@
 
 /* Responsive design */
 @media (max-width: 480px) {
-  .create-poll {
+  /* Classic Theme Create Poll Styles - Only apply when classic theme is active */
+.classic-theme .create-poll {
     padding: 1.5rem;
   }
-
-  .create-poll-title {
+  .classic-theme .create-poll-title {
     font-size: 1.25rem;
   }
 
-  .option-input-container {
+  .classic-theme .option-input-container {
     flex-direction: column;
     align-items: stretch;
     gap: 0.5rem;
   }
 
-  .option-number {
+  .classic-theme .option-number {
     align-self: center;
   }
 
-  .remove-option {
+  .classic-theme .remove-option {
     align-self: center;
   }
 }

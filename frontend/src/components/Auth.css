@@ -1,4 +1,5 @@
-.auth-container {
+/* Modern Theme Auth Styles - Only apply when modern theme is active */
+.modern-theme .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +8,7 @@
   padding: 20px;
 }
 
-.auth-card {
+.modern-theme .auth-card {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 15px;
   padding: 40px;
@@ -17,43 +18,43 @@
   max-width: 450px;
 }
 
-.auth-header {
+.modern-theme .auth-header {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.auth-header h2 {
+.modern-theme .auth-header h2 {
   color: #333;
   font-size: 28px;
   font-weight: 700;
   margin: 0 0 10px 0;
 }
 
-.auth-header p {
+.modern-theme .auth-header p {
   color: #666;
   font-size: 16px;
   margin: 0;
 }
 
-.auth-form {
+.modern-theme .auth-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.form-group {
+.modern-theme .form-group {
   display: flex;
   flex-direction: column;
 }
 
-.form-group label {
+.modern-theme .form-group label {
   color: #333;
   font-weight: 500;
   margin-bottom: 8px;
   font-size: 14px;
 }
 
-.form-group input {
+.modern-theme .form-group input {
   padding: 12px 16px;
   border: 2px solid #e1e5e9;
   border-radius: 8px;
@@ -64,18 +65,18 @@
   font-weight: 400;
 }
 
-.form-group input:focus {
+.modern-theme .form-group input:focus {
   outline: none;
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.form-group input::placeholder {
+.modern-theme .form-group input::placeholder {
   color: #7f8c8d;
   font-weight: 400;
 }
 
-.auth-button {
+.modern-theme .auth-button {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
@@ -88,18 +89,18 @@
   margin-top: 10px;
 }
 
-.auth-button:hover:not(:disabled) {
+.modern-theme .auth-button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
 
-.auth-button:disabled {
+.modern-theme .auth-button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
   transform: none;
 }
 
-.error-message {
+.modern-theme .error-message {
   background: #fee;
   color: #c33;
   padding: 12px 16px;
@@ -109,20 +110,20 @@
   text-align: center;
 }
 
-.auth-switch {
+.modern-theme .auth-switch {
   text-align: center;
   margin-top: 25px;
   padding-top: 20px;
   border-top: 1px solid #e1e5e9;
 }
 
-.auth-switch p {
+.modern-theme .auth-switch p {
   color: #666;
   font-size: 14px;
   margin: 0;
 }
 
-.switch-button {
+.modern-theme .switch-button {
   background: none;
   border: none;
   color: #667eea;
@@ -132,6 +133,6 @@
   margin-left: 5px;
 }
 
-.switch-button:hover {
+.modern-theme .switch-button:hover {
   color: #764ba2;
 }

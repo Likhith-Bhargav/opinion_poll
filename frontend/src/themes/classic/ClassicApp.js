@@ -172,13 +172,7 @@ function ClassicApp() {
               </div>
             </div>
           </header>
-          <main className="App-main">
-            <div className="container">
-              <div className="content">
-                <Auth onAuthSuccess={handleAuthSuccess} />
-              </div>
-            </div>
-          </main>
+          <Auth onAuthSuccess={handleAuthSuccess} />
         </div>
       </div>
     );

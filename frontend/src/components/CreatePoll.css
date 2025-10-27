@@ -1,36 +1,42 @@
-.create-poll {
+/* Modern Theme Create Poll Styles - Only apply when modern theme is active */
+.modern-theme .create-poll {
   height: 100%;
   display: flex;
   flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
-.create-poll h3 {
+.modern-theme .create-poll h3 {
   margin: 0 0 1.5rem 0;
   font-size: 1.3rem;
   font-weight: 600;
 }
 
-.create-poll-form {
+.modern-theme .create-poll-form {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   flex: 1;
 }
 
-.form-group {
+.modern-theme .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.form-group label {
+.modern-theme .form-group label {
   font-weight: 500;
   font-size: 0.9rem;
   opacity: 0.9;
 }
 
-.form-group input,
-.form-group textarea {
+.modern-theme .form-group input,
+.modern-theme .form-group textarea {
   padding: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
@@ -41,36 +47,36 @@
   transition: all 0.3s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.modern-theme .form-group input:focus,
+.modern-theme .form-group textarea:focus {
   outline: none;
   border-color: rgba(255, 255, 255, 0.5);
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.modern-theme .form-group input::placeholder,
+.modern-theme .form-group textarea::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.options-list {
+.modern-theme .options-list {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.option-input {
+.modern-theme .option-input {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.option-input input {
+.modern-theme .option-input input {
   flex: 1;
 }
 
-.remove-option {
+.modern-theme .remove-option {
   background: rgba(244, 67, 54, 0.2);
   border: 1px solid rgba(244, 67, 54, 0.3);
   color: #ff6b6b;
@@ -86,12 +92,12 @@
   flex-shrink: 0;
 }
 
-.remove-option:hover {
+.modern-theme .remove-option:hover {
   background: rgba(244, 67, 54, 0.3);
   transform: scale(1.1);
 }
 
-.add-option-btn {
+.modern-theme .add-option-btn {
   background: rgba(76, 175, 80, 0.2);
   border: 1px solid rgba(76, 175, 80, 0.3);
   color: #81c784;
@@ -103,18 +109,18 @@
   align-self: flex-start;
 }
 
-.add-option-btn:hover {
+.modern-theme .add-option-btn:hover {
   background: rgba(76, 175, 80, 0.3);
   transform: translateY(-1px);
 }
 
-.form-help {
+.modern-theme .form-help {
   font-size: 0.75rem;
   opacity: 0.6;
   margin-top: 0.25rem;
 }
 
-.error-message {
+.modern-theme .error-message {
   background: rgba(244, 67, 54, 0.2);
   border: 1px solid rgba(244, 67, 54, 0.3);
   color: #ff6b6b;
@@ -123,7 +129,7 @@
   font-size: 0.85rem;
 }
 
-.submit-poll-btn {
+.modern-theme .submit-poll-btn {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
   color: white;
@@ -136,12 +142,12 @@
   margin-top: auto;
 }
 
-.submit-poll-btn:hover:not(:disabled) {
+.modern-theme .submit-poll-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
 }
 
-.submit-poll-btn:disabled {
+.modern-theme .submit-poll-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
